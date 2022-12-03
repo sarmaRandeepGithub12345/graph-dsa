@@ -1,4 +1,5 @@
-    bool funct(int node,int parent, vector<int>&visited,int V,vector<int>adj[]){
+//Using dfs   
+bool funct(int node,int parent, vector<int>&visited,int V,vector<int>adj[]){
      visited[node]=1;
      for(int i=0;i<adj[node].size();i++){
         int t=adj[node][i];
@@ -22,4 +23,37 @@
          }
      }
         return 0;
+    }
+//Using bfs
+bool check(vector<int>adj[],int i,vector<int>&visited,queue<pair<int,int>>&q){
+     visited[i]=1;
+     while(!q.empty()){
+            int v=q.front().first;//son
+            int u=q.front().second;//parent
+            q.pop();
+           
+            for(int i=0;i<adj[v].size();i++){
+                int t=adj[v][i];
+                if(!visited[t]){
+                    q.push({t,v});
+                     visited[t]=1;
+                }else if(visited[t]==1 && t!=u)return true;   
+            }}
+     return false;
+ } 
+  
+  
+    // Function to detect cycle in an undirected graph.
+    bool isCycle(int V, vector<int> adj[]) {
+        // Code here
+        vector<int>visited(V,0);
+        queue<pair<int,int>>q;
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                q.push({i,-1});
+                if(check(adj,i,visited,q))return true;
+            }
+            
+        }        
+        return false;
     }
