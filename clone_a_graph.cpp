@@ -18,29 +18,25 @@
 
 class Solution {
 public:
-
-
-    Node*funct(map<Node*,int>&visited,Node*node,map<Node*,Node*>&opp){
-       
-    Node*root=new Node();
-    root->val=node->val;
-    vector<Node*>neigh;
+    void funct(map<Node*,Node*>&track,Node*node){
+    Node*root= new Node(node->val);
+    track[node]=root;    
+    for(auto it:node->neighbors){
+        if(track.find(it)!=track.end()){
+           root->neighbors.push_back(track[it]); 
+        }else{
+            funct(track,it);
+            root->neighbors.push_back(track[it]);
+        }
+    }    
+        
+        
+    }
     
-    visited[node]=1;
-    opp[node]=root;
-    int s=node->neighbors.size();
-    for(int i=0;i<s;i++){
-        Node*temp=node->neighbors[i];
-        if(!visited[temp] || visited[temp]==0)
-        neigh.push_back(funct(visited,temp,opp));
-        else neigh.push_back(opp[node]);
-    } 
-        root->neighbors=neigh;
-    return root;    
-    }
-
     Node* cloneGraph(Node* node) {
-        map<Node*,int>visited;
-        map<Node*,Node*>opp;
-        return funct(visited,node,opp);
+    if(node==NULL)return NULL;
+        map<Node*,Node*>track;
+ funct(track,node);    
+return track[node];        
     }
+};
