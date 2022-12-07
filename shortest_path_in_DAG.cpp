@@ -30,7 +30,7 @@
       stack < int > st;
       for (int i = 0; i < N; i++) {
         if (!vis[i]) {
-          topoSort(i, adj, vis, st);
+          topoSort(i, adj, vis, st) ;
         }
       }
       //Further, we declare a vector ‘dist’ in which we update the value of the nodes’
