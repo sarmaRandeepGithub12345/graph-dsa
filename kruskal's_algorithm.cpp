@@ -18,6 +18,7 @@
     int spanningTree(int V, vector<vector<int>> adj[])
     {
         vector<pair<int,pair<int,int>>>temp;
+     //TC-O(Nodes +Edges)
         for(int i=0;i<V;i++){
             for(auto it:adj[i]){
                 int u=it[0];
@@ -26,16 +27,23 @@
                 temp.push_back({d,{i,u}});
             }
         }
-    vector<int>parent(V);
-    vector<int>dist(V);
-    for(int i=0;i<V;i++){
+     
+    vector<int>parent(V);//SC: O(Nodes)
+    vector<int>dist(V); //SC: O(Nodes)
+    
+     //TC:O(Nodes)
+     for(int i=0;i<V;i++){
         parent[i]=i;
         dist[i]=1;
     }
     int sum=0;
-    sort(temp.begin(),temp.end());    
+     
+     
+    sort(temp.begin(),temp.end());//TC: Edges*Log(Edges)    
    // cout<<temp[0].first<<" "<<temp[0].second.first<<" "<<temp[0].second.second<<endl;
-    for(auto it:temp){
+    
+    //TC:Edges*4*alpha 
+     for(auto it:temp){
     int d=it.first,u=it.second.first,v=it.second.second;    
     
     if(find(parent,u)!=find(parent,v)){
