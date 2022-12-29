@@ -1,4 +1,105 @@
-   int find(vector<int>&parent,int node){
+//Adjacency Matrix dfs 
+void dfs(int node,vector<int>graph[],vector<int>&visited){
+        visited[node]=1;
+        for(auto it:graph[node]){
+            if(!visited[it]){
+                dfs(it,graph,visited);
+            }
+        }
+    }
+  
+    int numProvinces(vector<vector<int>> adj, int V) {
+        // code here
+        vector<int>graph[V];
+        for(int i=0;i<V;i++){
+            for(int j=0;j<adj[i].size();j++){
+                if(adj[i][j]){
+               
+                graph[i].push_back(j);
+                graph[j].push_back(i);
+            }
+            }
+        }
+        int count=0;
+        vector<int>visited(V,0);
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                dfs(i,graph,visited);
+                count++;
+                
+            }
+        }return count;
+    }
+//Adjacency List DFS
+   void dfs(int node,vector<int>graph[],vector<int>&visited){
+        visited[node]=1;
+        for(auto it:graph[node]){
+            if(!visited[it]){
+                dfs(it,graph,visited);
+            }
+        }
+    }
+  
+    int numProvinces(vector<vector<int>> adj, int V) {
+        // code here
+        vector<int>graph[V];
+        for(int i=0;i<V;i++){
+            for(int j=0;j<adj[i].size();j++){
+                if(adj[i][j]){
+               
+                graph[i].push_back(j);
+                graph[j].push_back(i);
+            }
+            }
+        }
+        int count=0;
+        vector<int>visited(V,0);
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                dfs(i,graph,visited);
+                count++;
+                
+            }
+        }return count;
+    }
+//Adjacency list bfs
+int numProvinces(vector<vector<int>> adj, int V) {
+        // code here
+        vector<int>graph[V];
+        for(int i=0;i<V;i++){
+            for(int j=0;j<adj[i].size();j++){
+                if(adj[i][j]){
+               
+                graph[i].push_back(j);
+                graph[j].push_back(i);
+            }
+            }
+        }
+    int count=0;
+    vector<int>visited(V,0);
+    queue<int>q;    
+      for(int i=0;i<V;i++){
+          if(!visited[i]){
+            count++;
+            q.push(i);
+            visited[i]=1;
+            while(!q.empty()){
+                int t =q.front();
+                q.pop();
+                for(auto it:graph[t]){
+                    if(!visited[it]){
+                        q.push(it);
+                        visited[it]=1;
+                    }
+                }
+            }
+          }
+      }return count;
+    }
+};
+
+//Union 
+int find(vector<int>&parent,int node){
         if(node==parent[node])return node;
         else return parent[node]=find(parent,parent[node]);
     }
