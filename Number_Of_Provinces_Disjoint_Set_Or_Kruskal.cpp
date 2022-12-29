@@ -67,8 +67,8 @@ void dfs(int node,vector<int>graph[],vector<int>&visited){
         }return count;
     }
 //Adjacency list bfs
-//TC - 87%
-//SC - 18.18%
+//TC - 87%   , O(N) + O(V+ 2*E)
+//SC - 18.18%, O(N) + O(N)
 int numProvinces(vector<vector<int>> adj, int V) {
         // code here
         vector<int>graph[V];
