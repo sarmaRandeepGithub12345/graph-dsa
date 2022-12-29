@@ -1,3 +1,5 @@
+//TC: N*N*4;
+//SC: N*N
 vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
         // Code here 
         int oldColor=image[sr][sc];
