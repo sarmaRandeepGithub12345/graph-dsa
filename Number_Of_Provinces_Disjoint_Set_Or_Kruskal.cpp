@@ -1,4 +1,6 @@
 //Adjacency Matrix dfs 
+//TC: 98%
+//SC:12.12%
 void dfs(int node,vector<int>graph[],vector<int>&visited){
         visited[node]=1;
         for(auto it:graph[node]){
@@ -31,6 +33,8 @@ void dfs(int node,vector<int>graph[],vector<int>&visited){
         }return count;
     }
 //Adjacency List DFS
+//TC - 90.78%
+//SC - 18.18%
    void dfs(int node,vector<int>graph[],vector<int>&visited){
         visited[node]=1;
         for(auto it:graph[node]){
@@ -63,6 +67,8 @@ void dfs(int node,vector<int>graph[],vector<int>&visited){
         }return count;
     }
 //Adjacency list bfs
+//TC - 87%
+//SC - 18.18%
 int numProvinces(vector<vector<int>> adj, int V) {
         // code here
         vector<int>graph[V];
@@ -99,6 +105,8 @@ int numProvinces(vector<vector<int>> adj, int V) {
 };
 
 //Union 
+//TC:  93%
+//SC:  40%
 int find(vector<int>&parent,int node){
         if(node==parent[node])return node;
         else return parent[node]=find(parent,parent[node]);
