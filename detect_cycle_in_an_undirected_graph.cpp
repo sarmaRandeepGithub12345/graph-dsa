@@ -25,6 +25,8 @@ bool funct(int node,int parent, vector<int>&visited,int V,vector<int>adj[]){
         return 0;
     }
 //Using bfs
+//TC : O(V +2E)
+//SC : O(N)
 bool check(vector<int>adj[],int i,vector<int>&visited,queue<pair<int,int>>&q){
      visited[i]=1;
      while(!q.empty()){
