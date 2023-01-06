@@ -8,8 +8,13 @@
        
         vector<int>dist(V,1e8);
         dist[S]=0;
-        for(int i=0;i<V-1;i++){
-        for(auto it:edges){
+     //V-1 iterations because if we have a tree of size n
+     //Suppose V =5
+     //and the graph is 0 -1-> 1 -1-> 3 -1-> 4 -1-> 2 .So,to find the shortest path from source to each node ,we have to iterate the graph 4 times
+     for(int i=0;i<V-1;i++){
+        
+         
+         for(auto it:edges){
             int v=it[0];
             int u =it[1];
             int d=it[2];
