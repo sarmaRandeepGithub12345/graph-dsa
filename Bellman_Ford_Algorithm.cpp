@@ -25,6 +25,7 @@
             }
         }
         }
+     //After V-1 iterations shortest distance if found ,but if (i>=V) and distance of one of the nodes still decreases then ,we can confirm that there is a negative cycle
         for(auto it:edges){
             int v=it[0];
             int u =it[1];
